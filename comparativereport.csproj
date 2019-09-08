@@ -5,8 +5,8 @@
     <Platform Condition=" '$(Platform)' == '' ">anycpu</Platform>
     <ProjectGuid>{1C0C8283-B9A6-4706-82CD-F93C27AD61AA}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>candidatereport</RootNamespace>
-    <AssemblyName>candidatereport</AssemblyName>
+    <RootNamespace>comparativereport</RootNamespace>
+    <AssemblyName>comparativereport</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|anycpu' ">
@@ -55,7 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Yooin\FeaturesReport.cs" />
     <Compile Include="Yooin\ImageReport.cs" />
-    <Compile Include="Yooin\CandidateReportFactory.cs" />
+    <Compile Include="Yooin\ComparativeReportFactory.cs" />
     <Compile Include="Yooin\Helper\OperationsYears.cs" />
     <Compile Include="Yooin\Helper\ResultComptenecesTable.cs" />
     <Compile Include="PdfFactory.cs" />

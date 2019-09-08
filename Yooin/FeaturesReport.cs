@@ -45,7 +45,7 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             latoTitle.Color = BaseColor.WHITE;
             latoSubTitle.Color = BaseColor.WHITE;
 
-            Chunk text = new Chunk("Reporte Integral de Afinidad", latoTitle);
+            Chunk text = new Chunk("Reporte comparativo de competencias", latoTitle);
             Paragraph p = new Paragraph();
             p.Add(text);
             PdfPCell cell1 = new PdfPCell(p);
@@ -54,22 +54,22 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             nested.AddCell(cell1);
 
             latoSubTitle.SetStyle(Font.BOLD);
-            Chunk chunk = new Chunk("Evaluado: ", latoSubTitle);
-            latoSubTitle.SetStyle(Font.NORMAL);
-            Chunk chunk2 = new Chunk(candidateName, latoSubTitle);
-            latoSubTitle.SetStyle(Font.BOLD);
-            Chunk chunk3 = new Chunk("  | Puesto:", latoSubTitle);
+            //Chunk chunk = new Chunk("Evaluado: ", latoSubTitle);
+            //latoSubTitle.SetStyle(Font.NORMAL);
+            //Chunk chunk2 = new Chunk(candidateName, latoSubTitle);
+            //latoSubTitle.SetStyle(Font.BOLD);
+            Chunk chunk3 = new Chunk("Puesto:", latoSubTitle);
             latoSubTitle.SetStyle(Font.NORMAL);
             Chunk chunk4 = new Chunk(vacantName, latoSubTitle);
             latoSubTitle.SetStyle(Font.BOLD);
-            Chunk chunk5 = new Chunk("  |  Vigente hasta: ", latoSubTitle);
+            Chunk chunk5 = new Chunk("  |  Fecha de emisión: ", latoSubTitle);
             latoSubTitle.SetStyle(Font.NORMAL);
             expirationDate = expirationDate.AddYears(1);
             Chunk chunk6 = new Chunk(expirationDate.ToString("dd/MM/yyyy"), latoSubTitle);
 
             p = new Paragraph();
-            p.Add(chunk);
-            p.Add(chunk2);
+            //p.Add(chunk);
+            //p.Add(chunk2);
             p.Add(chunk3);
             p.Add(chunk4);
             p.Add(chunk5);

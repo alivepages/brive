@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{1C0C8283-B9A6-4706-82CD-F93C27AD61AA}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Yooin/FeaturesReport.cs">
+    <Files>
+      <File FileName="Yooin/ComparativeReportFactory.cs" Line="278" Column="49" />
+      <File FileName="Yooin/FeaturesReport.cs" Line="48" Column="59" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="comparativereport" expanded="True">
+            <Node name="comparativereport" expanded="True">
+              <Node name="Yooin" expanded="True">
+                <Node name="FeaturesReport.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.comparativereport PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|anycpu" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

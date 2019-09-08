@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Brive.Middleware.PdfGenerator.Yooin
 {
-    class CandidateReportFactory
+    class ComparativeReportFactory
     {
         private Candidate candidate;
         private VacantCandidateResult vacantCandidateResult;

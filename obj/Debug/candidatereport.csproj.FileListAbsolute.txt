@@ -11,3 +11,16 @@
 /Users/joel/Projects/candidatereport/candidatereport/obj/Debug/candidatereport.exe
 /Users/joel/Projects/candidatereport/candidatereport/obj/Debug/candidatereport.pdb
 /Users/joel/Projects/candidatereport/candidatereport/bin/Debug/candidatereport.exe.config
+/Users/joel/Projects/comparativereport/bin/Debug/candidatereport.exe.config
+/Users/joel/Projects/comparativereport/bin/Debug/candidatereport.exe
+/Users/joel/Projects/comparativereport/bin/Debug/candidatereport.pdb
+/Users/joel/Projects/comparativereport/bin/Debug/Brive.TestingCenter.Contracts.dll
+/Users/joel/Projects/comparativereport/bin/Debug/Brive.Yooin.Contracts.dll
+/Users/joel/Projects/comparativereport/bin/Debug/Brive.YooinEnterprise.DTO.dll
+/Users/joel/Projects/comparativereport/bin/Debug/itextsharp.dll
+/Users/joel/Projects/comparativereport/bin/Debug/itextsharp.xml
+/Users/joel/Projects/comparativereport/obj/Debug/candidatereport.csprojAssemblyReference.cache
+/Users/joel/Projects/comparativereport/obj/Debug/candidatereport.csproj.CoreCompileInputs.cache
+/Users/joel/Projects/comparativereport/obj/Debug/candidatereport.csproj.CopyComplete
+/Users/joel/Projects/comparativereport/obj/Debug/candidatereport.exe
+/Users/joel/Projects/comparativereport/obj/Debug/candidatereport.pdb

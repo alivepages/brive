@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "comparativereport", "comparativereport.csproj", "{1C0C8283-B9A6-4706-82CD-F93C27AD61AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|anycpu = Debug|anycpu
+		Release|anycpu = Release|anycpu
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C0C8283-B9A6-4706-82CD-F93C27AD61AA}.Debug|anycpu.ActiveCfg = Debug|anycpu
+		{1C0C8283-B9A6-4706-82CD-F93C27AD61AA}.Debug|anycpu.Build.0 = Debug|anycpu
+		{1C0C8283-B9A6-4706-82CD-F93C27AD61AA}.Release|anycpu.ActiveCfg = Release|anycpu
+		{1C0C8283-B9A6-4706-82CD-F93C27AD61AA}.Release|anycpu.Build.0 = Release|anycpu
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$0.VersionControlPolicy = $2
+	EndGlobalSection
+EndGlobal

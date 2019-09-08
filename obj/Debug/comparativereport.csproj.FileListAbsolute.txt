@@ -1,0 +1,13 @@
+/Users/joel/Projects/comparativereport/bin/Debug/Brive.TestingCenter.Contracts.dll
+/Users/joel/Projects/comparativereport/bin/Debug/Brive.Yooin.Contracts.dll
+/Users/joel/Projects/comparativereport/bin/Debug/Brive.YooinEnterprise.DTO.dll
+/Users/joel/Projects/comparativereport/bin/Debug/itextsharp.dll
+/Users/joel/Projects/comparativereport/bin/Debug/itextsharp.xml
+/Users/joel/Projects/comparativereport/obj/Debug/comparativereport.csprojAssemblyReference.cache
+/Users/joel/Projects/comparativereport/obj/Debug/comparativereport.csproj.CoreCompileInputs.cache
+/Users/joel/Projects/comparativereport/obj/Debug/comparativereport.csproj.CopyComplete
+/Users/joel/Projects/comparativereport/bin/Debug/comparativereport.exe.config
+/Users/joel/Projects/comparativereport/bin/Debug/comparativereport.exe
+/Users/joel/Projects/comparativereport/bin/Debug/comparativereport.pdb
+/Users/joel/Projects/comparativereport/obj/Debug/comparativereport.exe
+/Users/joel/Projects/comparativereport/obj/Debug/comparativereport.pdb
