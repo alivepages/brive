@@ -40,8 +40,8 @@ namespace Brive.Middleware.PdfGenerator.Yooin
 
             PdfPTable nested = new PdfPTable(1);
 
-            Font latoTitle = FontFactory.GetFont("Lato", 18f, Font.BOLD);
-            Font latoSubTitle = FontFactory.GetFont("Lato", 10f);
+            Font latoTitle = FontFactory.GetFont("Lato", 18f, Font.NORMAL);
+            Font latoSubTitle = FontFactory.GetFont("Lato", 12f);
             latoTitle.Color = BaseColor.WHITE;
             latoSubTitle.Color = BaseColor.WHITE;
 
@@ -77,6 +77,7 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             cell1 = new PdfPCell(p);
             cell1.BorderWidth = 0;
             cell1.PaddingLeft = 20f;
+            cell1.PaddingTop = 5f;
             nested.AddCell(cell1);
             nested.HorizontalAlignment = Element.ALIGN_CENTER;
 
