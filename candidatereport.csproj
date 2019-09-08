@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">anycpu</Platform>
+    <ProjectGuid>{1C0C8283-B9A6-4706-82CD-F93C27AD61AA}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>candidatereport</RootNamespace>
+    <AssemblyName>candidatereport</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|anycpu' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|anycpu' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Brive.TestingCenter.Contracts">
+      <HintPath>referencias\Brive.TestingCenter.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Brive.Yooin.Contracts">
+      <HintPath>referencias\Brive.Yooin.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Brive.YooinEnterprise.DTO">
+      <HintPath>referencias\Brive.YooinEnterprise.DTO.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>referencias\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Yooin\FeaturesReport.cs" />
+    <Compile Include="Yooin\ImageReport.cs" />
+    <Compile Include="Yooin\CandidateReportFactory.cs" />
+    <Compile Include="Yooin\Helper\OperationsYears.cs" />
+    <Compile Include="Yooin\Helper\ResultComptenecesTable.cs" />
+    <Compile Include="PdfFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
