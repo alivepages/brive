@@ -129,7 +129,8 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             table.AddCell(TableHeaderWithIcon("Experiencia", "Experiencia", 12f, 12f, 7f));
             table.AddCell(TableHeaderWithIcon("Salario deseado", "Salario", 10f, 15f, 5f));
             table.AddCell(TableHeaderWithIcon("Ubicación", "Ubicacion", 10f, 15f, 5f));
-            table.AddCell(TableHeaderWithIcon("Afinidad con el puesto", "Level", 15f, 15f, 5f));
+            table.AddCell(TableHeaderWithIcon("Afinidad con el puesto", "Level", 15f, 15f, 5f)).PaddingRight = 20f;
+            //cell.PaddingRight = 20f;
 
             for (int i = 0; i<5; i++)
             {
@@ -145,7 +146,7 @@ namespace Brive.Middleware.PdfGenerator.Yooin
         private PdfPCell TableHeader(string data)
         {
             PdfPCell cell = new PdfPCell();
-            Paragraph p = new Paragraph();
+            Paragraph p = new Paragraph(13);
             Font lato = FontFactory.GetFont("Lato", 10f);
             lato.Color = new BaseColor(84, 84, 84);
 
@@ -192,19 +193,37 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             Font arial = FontFactory.GetFont("Arial", 10f);
             arial.Color = new BaseColor(0, 0, 0);
 
+            //p.PaddingTop = -5f;
             p.Add(new Chunk(data, arial));
             p.Alignment = Element.ALIGN_CENTER;
+            
             cell.AddElement(p);
+
+            //cell.VerticalAlignment = Element.ALIGN_MIDDLE;
             cell.BorderWidth = 0;
             return cell;
         }
 
         private PdfPCell TableContentName(string data)
         {
+            float[] widths = new float[] { 10f, 30f };
+            PdfPTable table = new PdfPTable(widths);
+            Image avatar = ImageReport.GetDemographicIcon("Avatar/User");
+            avatar.ScaleToFit(37f, 37f);
+            PdfPCell cell1 = new PdfPCell(avatar);
+            cell1.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cell1.BorderWidth = 0;
+            cell1.PaddingTop = 4F;
+            cell1.PaddingBottom = 4F;
+            table.AddCell(cell1);
+
             PdfPCell cell = new PdfPCell();
+            cell.PaddingLeft = 10f;
+            cell.PaddingTop = 0.5f;
             Paragraph p = new Paragraph();
             Font arial = FontFactory.GetFont("Arial", 12f);
             arial.Color = new BaseColor(0, 0, 0);
+            
 
             p.Add(new Chunk(data, arial));
             p.Alignment = Element.ALIGN_LEFT;
@@ -215,9 +234,13 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             arialG.Color = new BaseColor(10, 155, 255);
             p2.Add(new Chunk("Candidato A", arialG));
             cell.AddElement(p2);
-
             cell.BorderWidth = 0;
-            return cell;
+
+            table.AddCell(cell);
+            PdfPCell cellAll = new PdfPCell(table);
+            cellAll.BorderWidth = 0;
+
+            return cellAll;
         }
 
         private PdfPCell TableContentLevel(string data)
@@ -229,6 +252,9 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             arial.Color = new BaseColor(10, 155, 255);
             p.Add(new Chunk(data, arial));
             p.Alignment = Element.ALIGN_RIGHT;
+            
+            cell.PaddingRight = 20f;
+            //cell.VerticalAlignment = Element.ALIGN_MIDDLE;
             cell.AddElement(p);
 
             Paragraph p2 = new Paragraph(10f);
