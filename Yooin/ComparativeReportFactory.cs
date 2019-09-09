@@ -140,14 +140,15 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             //cell.PaddingRight = 20f;
 
             CandidateReportComparative ci;
-            for (int i = 0; i<5; i++)
+            for (int i = 0; i<Math.Min(5, this.vacantCandidateReportComparative.candidate.Length); i++)
             {
                 ci = this.vacantCandidateReportComparative.candidate[i];
-                table.AddCell(TableContentName(ci.candidate.Name));
-                table.AddCell(TableContent("0 años 10 meses")).PaddingLeft = 10f;
-                table.AddCell(TableContent("$25,000.00 - $23,000.00")).PaddingLeft = 10f;
-                table.AddCell(TableContent("Tepito, Mexico City, CDMX, Mexico")).PaddingLeft = 10f;
-                table.AddCell(TableContentLevel("100.14%"));
+                table.AddCell(TableContentName(ci.candidate.Name,i));
+                table.AddCell(TableContent(ci.candidate.Experience)).PaddingLeft = 10f;
+                //table.AddCell(TableContent(""));
+                table.AddCell(TableContent(ci.CandidateSalary.Maximum.ToString() + " - " + ci.CandidateSalary.Minimum.ToString())).PaddingLeft = 10f;
+                table.AddCell(TableContent(ci.candidate.Address)).PaddingLeft = 10f;
+                table.AddCell(TableContentLevel(ci.AffinityPercentage.ToString()));
             }
             return table;
         }
@@ -213,7 +214,7 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             return cell;
         }
 
-        private PdfPCell TableContentName(string data)
+        private PdfPCell TableContentName(string data, int number)
         {
             float[] widths = new float[] { 10f, 30f };
             PdfPTable table = new PdfPTable(widths);
@@ -241,7 +242,11 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             Paragraph p2 = new Paragraph(13f);
             Font arialG = FontFactory.GetFont("Arial", 11f);
             arialG.Color = new BaseColor(10, 155, 255);
-            p2.Add(new Chunk("Candidato A", arialG));
+
+            int unicode = number + 65;
+            char character = (char)unicode;
+
+            p2.Add(new Chunk("Candidato " + character.ToString(), arialG));
             cell.AddElement(p2);
             cell.BorderWidth = 0;
 

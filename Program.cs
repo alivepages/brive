@@ -5,6 +5,7 @@ using iTextSharp.text.pdf;
 using Brive.Middleware.PdfGenerator;
 using Brive.YooinEnterprise.DTO.Models;
 using Brive.Yooin.Contracts;
+using Brive.YooinEnterprise.DTO;
 
 namespace candidatereport
 {
@@ -22,36 +23,71 @@ namespace candidatereport
                     {
                         candidate = new CandidateLight
                         {
-                            Name = "Anakin Skywalker"
-                        } 
+                            Name = "Anakin Skywalker",
+                            Address = "Tepito, Mexico City, CDMX, Mexico",
+                            Experience = "0 años 10 meses"
+                        },
+                        CandidateSalary = new CandidateSalary{
+                             Minimum = 23000,
+                             Maximum = 25000
+                        },
+                        AffinityPercentage = 90
                     },
                     new CandidateReportComparative
                     {
                         candidate = new CandidateLight
                         {
-                            Name = "Obi-Wan Kenobi"
-                        }
+                            Name = "Obi-Wan Kenobi",
+                            Address = "Tepito, Mexico City, CDMX, Mexico",
+                            Experience = "0 años 10 meses"
+                        },
+                        CandidateSalary = new CandidateSalary{
+                             Minimum = 23000,
+                             Maximum = 25000
+                        },
+                        AffinityPercentage = 100
                     },
                     new CandidateReportComparative
                     {
                         candidate = new CandidateLight
                         {
-                            Name = "Gui-Gon Jinn"
-                        }
+                            Name = "Obi-Wan Kenobi",
+                            Address = "Tepito, Mexico City, CDMX, Mexico",
+                            Experience = "0 años 10 meses"
+                        },
+                        CandidateSalary = new CandidateSalary{
+                             Minimum = 23000,
+                             Maximum = 25000
+                        },
+                        AffinityPercentage = 100
                     },
                     new CandidateReportComparative
                     {
                         candidate = new CandidateLight
                         {
-                            Name = "Palpatine"
-                        }
+                            Name = "Palpatine",
+                            Address = "Chalco, Mexico City, CDMX, Mexico",
+                            Experience = "5 años 1 mes"
+                        },
+                        CandidateSalary = new CandidateSalary{
+                             Minimum = 22000,
+                             Maximum = 20000
+                        },
+                        AffinityPercentage = 100
                     },
                                                                                                     new CandidateReportComparative
                     {
                         candidate = new CandidateLight
                         {
-                            Name = "Darth Maul"
-                        }
+                            Name = "Darth Maul",
+                            Address = "Tepito, Mexico City, CDMX, Mexico",
+                            Experience = "0 años 10 meses"
+                        },
+                        CandidateSalary = new CandidateSalary{
+                             Minimum = 23000,
+                             Maximum = 25000
+                        },
+                        AffinityPercentage = 100
                     }
                 }
             };
