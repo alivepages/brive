@@ -16,6 +16,7 @@ namespace Brive.Middleware.PdfGenerator.Yooin
     {
         private Candidate candidate;
         private VacantCandidateResult vacantCandidateResult;
+        private VacantCandidateReportComparative vacantCandidateReportComparative;
 
         public void SetCandidate(Candidate candidate)
         {
@@ -26,6 +27,12 @@ namespace Brive.Middleware.PdfGenerator.Yooin
         {
             this.vacantCandidateResult = vacantCandidateResult;
         }
+
+        public void SetVacantCandidateReportComparative(VacantCandidateReportComparative vacantCandidateReportComparative)
+        {
+            this.vacantCandidateReportComparative = vacantCandidateReportComparative;
+        }
+        
 
         public byte[] BuildPdf(string pathReportPdf)
         {
@@ -132,9 +139,11 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             table.AddCell(TableHeaderWithIcon("Afinidad con el puesto", "Level", 15f, 15f, 5f)).PaddingRight = 20f;
             //cell.PaddingRight = 20f;
 
+            CandidateReportComparative ci;
             for (int i = 0; i<5; i++)
             {
-                table.AddCell(TableContentName("Anakin Skywalker"));
+                ci = this.vacantCandidateReportComparative.candidate[i];
+                table.AddCell(TableContentName(ci.candidate.Name));
                 table.AddCell(TableContent("0 años 10 meses")).PaddingLeft = 10f;
                 table.AddCell(TableContent("$25,000.00 - $23,000.00")).PaddingLeft = 10f;
                 table.AddCell(TableContent("Tepito, Mexico City, CDMX, Mexico")).PaddingLeft = 10f;

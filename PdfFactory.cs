@@ -15,12 +15,14 @@ namespace Brive.Middleware.PdfGenerator
         private Candidate candidate;        
         private VacantCandidateResult vacantCandidateResult;
         private ComparativeReportFactory comparativeReportFactory;
+        private VacantCandidateReportComparative vacantCandidateReportComparative;
 
-        public PdfFactory(string pathReportPdf /*, Candidate candidate, VacantCandidateResult vacantCandidateResult*/)
+        public PdfFactory(string pathReportPdf, VacantCandidateReportComparative vacantCandidateReportComparative)
         {
             this.pathReportPdf = pathReportPdf;
             //this.candidate = candidate;
             //this.vacantCandidateResult = vacantCandidateResult;
+            this.vacantCandidateReportComparative = vacantCandidateReportComparative;
 
             comparativeReportFactory = new ComparativeReportFactory();
         }
@@ -33,6 +35,7 @@ namespace Brive.Middleware.PdfGenerator
                 case (int)ReportType.YooinCandidate:
                     comparativeReportFactory.SetCandidate(candidate);
                     comparativeReportFactory.SetCandidateResult(vacantCandidateResult);
+                    comparativeReportFactory.SetVacantCandidateReportComparative(vacantCandidateReportComparative);
                     return comparativeReportFactory.BuildPdf(pathReportPdf);               
             }
             return new byte[] { };

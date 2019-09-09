@@ -3,6 +3,8 @@ using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Brive.Middleware.PdfGenerator;
+using Brive.YooinEnterprise.DTO.Models;
+using Brive.Yooin.Contracts;
 
 namespace candidatereport
 {
@@ -10,30 +12,55 @@ namespace candidatereport
     {
         public static void Main(string[] args)
         {
+            // Mock
+            VacantCandidateReportComparative data;
+            data = new VacantCandidateReportComparative
+            {
+                candidate = new CandidateReportComparative[]
+                {
+                    new CandidateReportComparative
+                    {
+                        candidate = new CandidateLight
+                        {
+                            Name = "Anakin Skywalker"
+                        } 
+                    },
+                    new CandidateReportComparative
+                    {
+                        candidate = new CandidateLight
+                        {
+                            Name = "Obi-Wan Kenobi"
+                        }
+                    },
+                    new CandidateReportComparative
+                    {
+                        candidate = new CandidateLight
+                        {
+                            Name = "Gui-Gon Jinn"
+                        }
+                    },
+                    new CandidateReportComparative
+                    {
+                        candidate = new CandidateLight
+                        {
+                            Name = "Palpatine"
+                        }
+                    },
+                                                                                                    new CandidateReportComparative
+                    {
+                        candidate = new CandidateLight
+                        {
+                            Name = "Darth Maul"
+                        }
+                    }
+                }
+            };
+
 
             PdfFactory pdf;
-            pdf = new PdfFactory(@"/Users/joel/prueba.pdf");
+            pdf = new PdfFactory(@"/Users/joel/prueba.pdf", data);
             pdf.GenerateReport(1);
 
-            /*
-            // Creamos el documento con el tamaño de página tradicional
-            Document doc = new Document(PageSize.LETTER);
-            // Indicamos donde vamos a guardar el documento
-            PdfWriter writer = PdfWriter.GetInstance(doc,
-                                        new FileStream(@"/Users/joel/prueba.pdf", FileMode.Create));
-
-            // Le colocamos el título y el autor
-            // Nota: Esto no será visible en el documento
-            doc.AddTitle("Mi primer PDF");
-            doc.AddCreator("Roberto Torres");
-
-            // Abrimos el archivo
-            doc.Open();
-            doc.Add(new Paragraph("Mi primer documento PDF"));
-
-            doc.Close();
-            writer.Close();
-            */
         }
     }
 }
