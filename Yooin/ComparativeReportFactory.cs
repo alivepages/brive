@@ -48,7 +48,7 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             doc.Open();
 
             
-            doc.Add(this.title("Resumen Ejecutivo"));
+            doc.Add(this.title("Resumen Ejecutivo", 2f));
             doc.Add(this.BuildResumeTable());
 
             doc.Close();
@@ -107,16 +107,14 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             */
         }
 
-        private PdfPTable title(string text)
+        private PdfPTable title(string text, float spacing)
         {
             PdfPTable resultTable = new PdfPTable(1);
-            resultTable.SpacingAfter = 28f;
-
+            resultTable.SpacingAfter = spacing;
             PdfPCell cell = new PdfPCell(new Phrase(text,
               new Font(Font.FontFamily.HELVETICA, 20f, Font.NORMAL, new BaseColor(10, 155, 255))));
             cell.HorizontalAlignment = Element.ALIGN_LEFT;
             cell.BorderWidth = 0;
-            //cell.Padding = 10f;
             resultTable.AddCell(cell);
             return resultTable;
         }
@@ -127,50 +125,41 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             PdfPTable table = new PdfPTable(widths);
             table.SpacingAfter = 20f;
 
-            table.AddCell(Header("Nombre")).BorderWidth = 0;
-            table.AddCell(HeaderWithIcon("Experiencia", "Experiencia", 12f, 12f, 9f)).BorderWidth = 0;
-            table.AddCell(HeaderWithIcon("Salario deseado", "Salario", 10f, 15f, 7f)).BorderWidth = 0;
-            table.AddCell(HeaderWithIcon("Ubicación", "Ubicacion", 10f, 15f, 7f)).BorderWidth = 0;
-            table.AddCell(HeaderWithIcon("Afinidad con el puesto", "Level", 15f, 15f, 7f)).BorderWidth = 0;
-            /*
-            string moneyMin = candidate.JobPreferences.Where(m => m.Type.Id == 1).Select(m => m.Value).FirstOrDefault();
-            string moneyMax = candidate.JobPreferences.Where(m => m.Type.Id == 2).Select(m => m.Value).FirstOrDefault();
-            string location = string.Empty;
+            table.AddCell(TableHeader("Nombre"));
+            table.AddCell(TableHeaderWithIcon("Experiencia", "Experiencia", 12f, 12f, 7f));
+            table.AddCell(TableHeaderWithIcon("Salario deseado", "Salario", 10f, 15f, 5f));
+            table.AddCell(TableHeaderWithIcon("Ubicación", "Ubicacion", 10f, 15f, 5f));
+            table.AddCell(TableHeaderWithIcon("Afinidad con el puesto", "Level", 15f, 15f, 5f));
 
-            if (candidate.Locations.Count() > 0)
-                location = candidate.Locations.Select(l => l.Name).FirstOrDefault();
-
-            string currency = (!string.IsNullOrWhiteSpace(moneyMin) ? Convert.ToDecimal(moneyMin).ToString("C2") : "$ 0.00") + " - " +
-                (!string.IsNullOrWhiteSpace(moneyMax) ? Convert.ToDecimal(moneyMax).ToString("C2") : "$ 0.00");
-            table.AddCell(BuildCellDemograficData(OperationsYears.CalculateExperience(candidate.Experiences)));
-            table.AddCell(BuildCellDemograficData(candidate.JobLevel.Name));
-            table.AddCell(BuildCellDemograficData(currency));
-            table.AddCell(BuildCellDemograficData(location));
-            */
+            for (int i = 0; i<5; i++)
+            {
+                table.AddCell(TableContentName("Anakin Skywalker"));
+                table.AddCell(TableContent("0 años 10 meses")).PaddingLeft = 10f;
+                table.AddCell(TableContent("$25,000.00 - $23,000.00")).PaddingLeft = 10f;
+                table.AddCell(TableContent("Tepito, Mexico City, CDMX, Mexico")).PaddingLeft = 10f;
+                table.AddCell(TableContentLevel("100.14%"));
+            }
             return table;
         }
 
-        private PdfPCell Header(string data)
+        private PdfPCell TableHeader(string data)
         {
             PdfPCell cell = new PdfPCell();
             Paragraph p = new Paragraph();
             Font lato = FontFactory.GetFont("Lato", 10f);
-            lato.Color = new BaseColor(119, 119, 119);
+            lato.Color = new BaseColor(84, 84, 84);
 
-            Chunk text = new Chunk(data, lato);
-            p.Add(text);
+            p.Add(new Chunk(data, lato));
             cell.AddElement(p);
             cell.BorderWidth = 0;
             return cell;
         }
 
 
-        private PdfPCell HeaderWithIcon(string data, string iconName, float w, float h, float t)
+        private PdfPCell TableHeaderWithIcon(string data, string iconName, float w, float h, float t)
         {
             float[] widths = new float[] { 10f, 30f };
-
             PdfPTable table = new PdfPTable(widths);
-            
             Image icon = ImageReport.GetDemographicIcon("DemographicIcons/drawable-hdpi/" + iconName);
             icon.ScaleToFit(w, h);
             PdfPCell cell1 = new PdfPCell(icon);
@@ -182,18 +171,78 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             table.AddCell(cell1);
 
             PdfPCell cell = new PdfPCell();
-            Paragraph p = new Paragraph();
+            Paragraph p = new Paragraph(13);
             Font lato = FontFactory.GetFont("Lato", 10f);
-            lato.Color = new BaseColor(119, 119, 119);
-            Chunk text = new Chunk(data, lato);
-            p.Add(text);
+            lato.Color = new BaseColor(84, 84, 84);
+           
+            p.Add(new Chunk(data, lato));
             cell.AddElement(p);
             cell.BorderWidth = 0;
+            if (iconName == "Level") cell.PaddingTop = -5f; 
             table.AddCell(cell);
-            return new PdfPCell(table);
+            PdfPCell cellAll = new PdfPCell(table);
+            cellAll.BorderWidth = 0;
+            return cellAll;
         }
 
+        private PdfPCell TableContent(string data)
+        {
+            PdfPCell cell = new PdfPCell();
+            Paragraph p = new Paragraph();
+            Font arial = FontFactory.GetFont("Arial", 10f);
+            arial.Color = new BaseColor(0, 0, 0);
 
+            p.Add(new Chunk(data, arial));
+            p.Alignment = Element.ALIGN_CENTER;
+            cell.AddElement(p);
+            cell.BorderWidth = 0;
+            return cell;
+        }
+
+        private PdfPCell TableContentName(string data)
+        {
+            PdfPCell cell = new PdfPCell();
+            Paragraph p = new Paragraph();
+            Font arial = FontFactory.GetFont("Arial", 12f);
+            arial.Color = new BaseColor(0, 0, 0);
+
+            p.Add(new Chunk(data, arial));
+            p.Alignment = Element.ALIGN_LEFT;
+            cell.AddElement(p);
+
+            Paragraph p2 = new Paragraph(13f);
+            Font arialG = FontFactory.GetFont("Arial", 11f);
+            arialG.Color = new BaseColor(10, 155, 255);
+            p2.Add(new Chunk("Candidato A", arialG));
+            cell.AddElement(p2);
+
+            cell.BorderWidth = 0;
+            return cell;
+        }
+
+        private PdfPCell TableContentLevel(string data)
+        {
+            PdfPCell cell = new PdfPCell();
+
+            Paragraph p = new Paragraph();
+            Font arial = FontFactory.GetFont("Arial", 16f);
+            arial.Color = new BaseColor(10, 155, 255);
+            p.Add(new Chunk(data, arial));
+            p.Alignment = Element.ALIGN_RIGHT;
+            cell.AddElement(p);
+
+            Paragraph p2 = new Paragraph(10f);
+            Font arialCh = FontFactory.GetFont("Arial", 8f, Font.BOLD);
+            arialCh.Color = new BaseColor(139, 82, 255);
+            
+            p2.Add(new Chunk("Sobre calificado", arialCh));
+            p2.Alignment = Element.ALIGN_RIGHT;
+            
+            cell.AddElement(p2);
+            cell.PaddingTop = 5f;
+            cell.BorderWidth = 0;
+            return cell;
+        }
         #region Candidate Presentation
 
         private PdfPTable BuildCandidatePresentation()

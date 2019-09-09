@@ -58,7 +58,7 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             //latoSubTitle.SetStyle(Font.NORMAL);
             //Chunk chunk2 = new Chunk(candidateName, latoSubTitle);
             //latoSubTitle.SetStyle(Font.BOLD);
-            Chunk chunk3 = new Chunk("Puesto:", latoSubTitle);
+            Chunk chunk3 = new Chunk("Puesto: ", latoSubTitle);
             latoSubTitle.SetStyle(Font.NORMAL);
             Chunk chunk4 = new Chunk(vacantName, latoSubTitle);
             latoSubTitle.SetStyle(Font.BOLD);

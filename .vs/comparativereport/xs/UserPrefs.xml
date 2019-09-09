@@ -2,8 +2,8 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Yooin/ImageReport.cs">
     <Files>
       <File FileName="Yooin/ComparativeReportFactory.cs" Line="178" Column="38" />
-      <File FileName="Yooin/FeaturesReport.cs" Line="54" Column="35" />
-      <File FileName="Yooin/ImageReport.cs" Line="41" Column="13" />
+      <File FileName="Yooin/FeaturesReport.cs" />
+      <File FileName="Yooin/ImageReport.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,9 +16,6 @@
             </Node>
           </Node>
         </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
