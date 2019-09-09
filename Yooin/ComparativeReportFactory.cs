@@ -123,17 +123,15 @@ namespace Brive.Middleware.PdfGenerator.Yooin
 
         private PdfPTable BuildResumeTable()
         {
-            PdfPTable table = new PdfPTable(5);
+            float[] widths = new float[] { 40f, 30f, 30f, 30f, 30f };
+            PdfPTable table = new PdfPTable(widths);
             table.SpacingAfter = 20f;
 
-            Font lato = FontFactory.GetFont("Lato", 9f);
-            lato.Color = BaseColor.GRAY;
-
-            table.AddCell(Header("Nombre"));
-            table.AddCell(HeaderWithIcon("Experiencia", "Experiencia"));
-            table.AddCell(HeaderWithIcon("Salario deseado", "Salario"));
-            table.AddCell(HeaderWithIcon("Ubicación", "Ubicacion"));
-            table.AddCell(HeaderWithIcon("Afinidad con el puesto", "Level"));
+            table.AddCell(Header("Nombre")).BorderWidth = 0;
+            table.AddCell(HeaderWithIcon("Experiencia", "Experiencia", 12f, 12f, 9f)).BorderWidth = 0;
+            table.AddCell(HeaderWithIcon("Salario deseado", "Salario", 10f, 15f, 7f)).BorderWidth = 0;
+            table.AddCell(HeaderWithIcon("Ubicación", "Ubicacion", 10f, 15f, 7f)).BorderWidth = 0;
+            table.AddCell(HeaderWithIcon("Afinidad con el puesto", "Level", 15f, 15f, 7f)).BorderWidth = 0;
             /*
             string moneyMin = candidate.JobPreferences.Where(m => m.Type.Id == 1).Select(m => m.Value).FirstOrDefault();
             string moneyMax = candidate.JobPreferences.Where(m => m.Type.Id == 2).Select(m => m.Value).FirstOrDefault();
@@ -156,8 +154,8 @@ namespace Brive.Middleware.PdfGenerator.Yooin
         {
             PdfPCell cell = new PdfPCell();
             Paragraph p = new Paragraph();
-            Font lato = FontFactory.GetFont("Lato", 9f);
-            lato.Color = BaseColor.GRAY;
+            Font lato = FontFactory.GetFont("Lato", 10f);
+            lato.Color = new BaseColor(119, 119, 119);
 
             Chunk text = new Chunk(data, lato);
             p.Add(text);
@@ -167,36 +165,32 @@ namespace Brive.Middleware.PdfGenerator.Yooin
         }
 
 
-        private PdfPTable HeaderWithIcon(string data, string iconName)
+        private PdfPCell HeaderWithIcon(string data, string iconName, float w, float h, float t)
         {
+            float[] widths = new float[] { 10f, 30f };
 
-            PdfPTable table = new PdfPTable(2);
-
+            PdfPTable table = new PdfPTable(widths);
             
             Image icon = ImageReport.GetDemographicIcon("DemographicIcons/drawable-hdpi/" + iconName);
-            //icon.ScaleAbsolute(15f, 15f);
+            icon.ScaleToFit(w, h);
             PdfPCell cell1 = new PdfPCell(icon);
-            icon.WidthPercentage = 50;
+
             cell1.HorizontalAlignment = Element.ALIGN_RIGHT;
+            cell1.PaddingTop = t;
+            cell1.PaddingRight = 2f;
             cell1.BorderWidth = 0;
             table.AddCell(cell1);
 
             PdfPCell cell = new PdfPCell();
             Paragraph p = new Paragraph();
-            Font lato = FontFactory.GetFont("Lato", 9f);
-            lato.Color = BaseColor.GRAY;
+            Font lato = FontFactory.GetFont("Lato", 10f);
+            lato.Color = new BaseColor(119, 119, 119);
             Chunk text = new Chunk(data, lato);
             p.Add(text);
             cell.AddElement(p);
             cell.BorderWidth = 0;
             table.AddCell(cell);
-            
-
-            //p.Alignment = Element.ALIGN_CENTER;
-            //cell.HorizontalAlignment = Element.ALIGN_CENTER;
-
-
-            return table;
+            return new PdfPCell(table);
         }
 
 

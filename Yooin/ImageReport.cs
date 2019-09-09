@@ -38,8 +38,8 @@ namespace Brive.Middleware.PdfGenerator.Yooin
         public static Image GetDemographicIcon(string iconName)
         {
             Image image = Image.GetInstance(ConfigurationManager.AppSettings["ReportPdfIcons"] + iconName + ".png");
-            image.ScaleAbsolute(15f, 15f);
-            image.Alignment = Element.ALIGN_CENTER;
+            //image.ScaleAbsolute(15f, 15f);
+            //image.Alignment = Element.ALIGN_CENTER;
             return image;
         }
 

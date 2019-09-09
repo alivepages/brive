@@ -1,8 +1,9 @@
 ﻿<Properties StartupConfiguration="{1C0C8283-B9A6-4706-82CD-F93C27AD61AA}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Yooin/FeaturesReport.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Yooin/ImageReport.cs">
     <Files>
-      <File FileName="Yooin/ComparativeReportFactory.cs" Line="278" Column="49" />
-      <File FileName="Yooin/FeaturesReport.cs" Line="72" Column="15" />
+      <File FileName="Yooin/ComparativeReportFactory.cs" Line="178" Column="38" />
+      <File FileName="Yooin/FeaturesReport.cs" Line="54" Column="35" />
+      <File FileName="Yooin/ImageReport.cs" Line="41" Column="13" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -10,7 +11,7 @@
           <Node name="comparativereport" expanded="True">
             <Node name="comparativereport" expanded="True">
               <Node name="Yooin" expanded="True">
-                <Node name="FeaturesReport.cs" selected="True" />
+                <Node name="ImageReport.cs" selected="True" />
               </Node>
             </Node>
           </Node>
