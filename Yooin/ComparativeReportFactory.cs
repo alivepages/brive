@@ -210,18 +210,30 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             table.AddCell(HeaderBlue("D", "ResultTableIcons/drawable-hdpi/Persona", 13f, 13f, 5f)).BorderWidth = 0;
             table.AddCell(HeaderBlue("E", "ResultTableIcons/drawable-hdpi/Persona", 13f, 13f, 5f)).BorderWidth = 0;
 
-            /*
+
+            YooinEnterprise.DTO.VacantCompetence vi;
+
+
+            List <YooinEnterprise.DTO.Models.CandidateCompetence> vacants;
             CandidateReportComparative ci;
-            for (int i = 0; i < Math.Min(5, this.vacantCandidateReportComparative.candidate.Length); i++)
+
+
+            for (int i = 0; i < this.vacantCandidateReportComparative.vacantCompetences.Length; i++)
             {
-                ci = this.vacantCandidateReportComparative.candidate[i];
-                table.AddCell(TableContentName(ci.candidate.Name, i));
-                table.AddCell(TableContent(ci.candidate.Experience)).PaddingLeft = 10f;
-                table.AddCell(TableContent("$" + string.Format("{0:n}", ci.CandidateSalary.Maximum) + " - $" + string.Format("{0:n}", ci.CandidateSalary.Minimum))).PaddingLeft = 10f;
-                table.AddCell(TableContent(ci.candidate.Address)).PaddingLeft = 10f;
-                table.AddCell(TableContentLevel(ci.AffinityPercentage));
+                vi = this.vacantCandidateReportComparative.vacantCompetences[i];
+                table.AddCell(TableContent(vi.IsRequired.ToString())); // TODO: poner icono
+                table.AddCell(TableContent(vi.Name));
+                table.AddCell(TableContent(vi.MinScore.ToString()));
+
+                for (int k = 0; k < Math.Min(5, this.vacantCandidateReportComparative.candidate.Length); k++)
+                {
+                    ci = this.vacantCandidateReportComparative.candidate[i];
+                    vacants = ci.candidateCompetences.ToList();
+                    YooinEnterprise.DTO.Models.CandidateCompetence competence = vacants.First(s => s.Competence.Id == vi.CompetenceId);
+                    table.AddCell(TableContent(competence.Score.ToString())); // TODO: Poner pleca
+                }
             }
-            */
+            
             return table;
         }
 
