@@ -17,6 +17,25 @@ namespace candidatereport
             VacantCandidateReportComparative data;
             data = new VacantCandidateReportComparative
             {
+                vacantCompetences = new VacantCompetence[]
+                {
+                    new VacantCompetence
+                    {
+                        Name = "Guapo",
+                        IsRequired = false,
+                        MinScore = 3,
+                        MaxScore = 4,
+                        CompetenceId = 5
+                    },
+                    new VacantCompetence
+                    {
+                        Name = "Creatividad e Innovación",
+                        IsRequired = true,
+                        MinScore = 2,
+                        MaxScore = 4,
+                        CompetenceId = 3
+                    }
+                },
                 candidate = new CandidateReportComparative[]
                 {
                     new CandidateReportComparative
@@ -32,7 +51,34 @@ namespace candidatereport
                              Minimum = 23000,
                              Maximum = 25000
                         },
-                        AffinityPercentage = (decimal?)100.14
+                        AffinityPercentage = (decimal?)100.14,
+                        candidateCompetences = new Brive.YooinEnterprise.DTO.Models.CandidateCompetence[]
+                        {
+                            new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
+                            {
+                                Competence = new Competence
+                                {
+                                    Id = 1
+                                },
+                                Score = 1
+                            },
+                            new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
+                            {
+                                Competence = new Competence
+                                {
+                                    Id = 3
+                                },
+                                Score = 1
+                            },
+                            new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
+                            {
+                                Competence = new Competence
+                                {
+                                    Id = 5
+                                },
+                                Score = 1
+                            }
+                        }
                     },
                     new CandidateReportComparative
                     {
@@ -47,7 +93,34 @@ namespace candidatereport
                              Minimum = 23000,
                              Maximum = 25000
                         },
-                        AffinityPercentage = (decimal?)96.58
+                        AffinityPercentage = (decimal?)96.58,
+                        candidateCompetences = new Brive.YooinEnterprise.DTO.Models.CandidateCompetence[]
+                        {
+                            new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
+                            {
+                                Competence = new Competence
+                                {
+                                    Id = 1
+                                },
+                                Score = 1
+                            },
+                            new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
+                            {
+                                Competence = new Competence
+                                {
+                                    Id = 3
+                                },
+                                Score = 1
+                            },
+                            new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
+                            {
+                                Competence = new Competence
+                                {
+                                    Id = 5
+                                },
+                                Score = 2
+                            }
+                        }
                     },
                     new CandidateReportComparative
                     {
@@ -62,7 +135,34 @@ namespace candidatereport
                              Minimum = 23000,
                              Maximum = 25000
                         },
-                        AffinityPercentage = (decimal?)80.36
+                        AffinityPercentage = (decimal?)80.36,
+                        candidateCompetences = new Brive.YooinEnterprise.DTO.Models.CandidateCompetence[]
+                        {
+                            new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
+                            {
+                                Competence = new Competence
+                                {
+                                    Id = 1
+                                },
+                                Score = 1
+                            },
+                            new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
+                            {
+                                Competence = new Competence
+                                {
+                                    Id = 3
+                                },
+                                Score = 1
+                            },
+                            new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
+                            {
+                                Competence = new Competence
+                                {
+                                    Id = 5
+                                },
+                                Score = 3
+                            }
+                        }
                     },
                     new CandidateReportComparative
                     {
@@ -76,9 +176,36 @@ namespace candidatereport
                              Minimum = 22000,
                              Maximum = 20000
                         },
-                        AffinityPercentage = (decimal?)78.54
+                        AffinityPercentage = (decimal?)78.54,
+                        candidateCompetences = new Brive.YooinEnterprise.DTO.Models.CandidateCompetence[]
+                        {
+                            new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
+                            {
+                                Competence = new Competence
+                                {
+                                    Id = 1
+                                },
+                                Score = 1
+                            },
+                            new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
+                            {
+                                Competence = new Competence
+                                {
+                                    Id = 3
+                                },
+                                Score = 1
+                            },
+                            new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
+                            {
+                                Competence = new Competence
+                                {
+                                    Id = 5
+                                },
+                                Score = 4
+                            }
+                        }
                     },
-                                                                                                    new CandidateReportComparative
+                    new CandidateReportComparative
                     {
                         candidate = new CandidateLight
                         {
@@ -91,7 +218,34 @@ namespace candidatereport
                              Minimum = 23000,
                              Maximum = 25000
                         },
-                        AffinityPercentage = (decimal?)60.36
+                        AffinityPercentage = (decimal?)60.36,
+                        candidateCompetences = new Brive.YooinEnterprise.DTO.Models.CandidateCompetence[]
+                        {
+                            new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
+                            {
+                                Competence = new Competence
+                                {
+                                    Id = 1
+                                },
+                                Score = 1
+                            },
+                            new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
+                            {
+                                Competence = new Competence
+                                {
+                                    Id = 3
+                                },
+                                Score = 1
+                            },
+                            new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
+                            {
+                                Competence = new Competence
+                                {
+                                    Id = 5
+                                },
+                                Score = 5
+                            }
+                        }
                     }
                 }
             };

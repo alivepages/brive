@@ -222,12 +222,12 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             {
                 vi = this.vacantCandidateReportComparative.vacantCompetences[i];
                 table.AddCell(TableContent(vi.IsRequired.ToString())); // TODO: poner icono
-                table.AddCell(TableContent(vi.Name));
+                table.AddCell(TableContent(vi.Name, Element.ALIGN_LEFT));
                 table.AddCell(TableContent(vi.MinScore.ToString()));
 
                 for (int k = 0; k < Math.Min(5, this.vacantCandidateReportComparative.candidate.Length); k++)
                 {
-                    ci = this.vacantCandidateReportComparative.candidate[i];
+                    ci = this.vacantCandidateReportComparative.candidate[k];
                     vacants = ci.candidateCompetences.ToList();
                     YooinEnterprise.DTO.Models.CandidateCompetence competence = vacants.First(s => s.Competence.Id == vi.CompetenceId);
                     table.AddCell(TableContent(competence.Score.ToString())); // TODO: Poner pleca
@@ -295,7 +295,7 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             return cellAll;
         }
 
-        private PdfPCell TableContent(string data)
+        private PdfPCell TableContent(string data, int align = Element.ALIGN_CENTER)
         {
             PdfPCell cell = new PdfPCell();
             Paragraph p = new Paragraph();
@@ -304,7 +304,7 @@ namespace Brive.Middleware.PdfGenerator.Yooin
 
             //p.PaddingTop = -5f;
             p.Add(new Chunk(data, arial));
-            p.Alignment = Element.ALIGN_CENTER;
+            p.Alignment = align;
             
             cell.AddElement(p);
 
