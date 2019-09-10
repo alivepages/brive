@@ -12,8 +12,6 @@ namespace Brive.Middleware.PdfGenerator
     public class PdfFactory
     {
         private string pathReportPdf;
-        private Candidate candidate;        
-        private VacantCandidateResult vacantCandidateResult;
         private ComparativeReportFactory comparativeReportFactory;
         private VacantCandidateReportComparative vacantCandidateReportComparative;
 
@@ -33,8 +31,6 @@ namespace Brive.Middleware.PdfGenerator
             switch (reportType)
             {
                 case (int)ReportType.YooinCandidate:
-                    comparativeReportFactory.SetCandidate(candidate);
-                    comparativeReportFactory.SetCandidateResult(vacantCandidateResult);
                     comparativeReportFactory.SetVacantCandidateReportComparative(vacantCandidateReportComparative);
                     return comparativeReportFactory.BuildPdf(pathReportPdf);               
             }

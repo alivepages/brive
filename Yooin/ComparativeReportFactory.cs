@@ -57,6 +57,8 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             
             doc.Add(this.title("Resumen Ejecutivo", 2f));
             doc.Add(this.BuildResumeTable());
+            doc.Add(this.title("Comparativo por competencias", 2f));
+            doc.Add(this.BuildComparativeTable());
 
             doc.Close();
             writer.Close();
@@ -133,10 +135,10 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             table.SpacingAfter = 20f;
 
             table.AddCell(TableHeader("Nombre"));
-            table.AddCell(TableHeaderWithIcon("Experiencia", "Experiencia", 12f, 12f, 7f));
-            table.AddCell(TableHeaderWithIcon("Salario deseado", "Salario", 10f, 15f, 5f));
-            table.AddCell(TableHeaderWithIcon("Ubicación", "Ubicacion", 10f, 15f, 5f));
-            table.AddCell(TableHeaderWithIcon("Afinidad con el puesto", "Level", 15f, 15f, 5f)).PaddingRight = 20f;
+            table.AddCell(TableHeaderWithIcon("Experiencia", "DemographicIcons/drawable-hdpi/Experiencia", 12f, 12f, 7f));
+            table.AddCell(TableHeaderWithIcon("Salario deseado", "DemographicIcons/drawable-hdpi/Salario", 10f, 15f, 5f));
+            table.AddCell(TableHeaderWithIcon("Ubicación", "DemographicIcons/drawable-hdpi/Ubicacion", 10f, 15f, 5f));
+            table.AddCell(TableHeaderWithIcon("Afinidad con el puesto", "DemographicIcons/drawable-hdpi/Level", 15f, 15f, 5f)).PaddingRight = 20f;
             //cell.PaddingRight = 20f;
 
             CandidateReportComparative ci;
@@ -145,11 +147,81 @@ namespace Brive.Middleware.PdfGenerator.Yooin
                 ci = this.vacantCandidateReportComparative.candidate[i];
                 table.AddCell(TableContentName(ci.candidate.Name,i));
                 table.AddCell(TableContent(ci.candidate.Experience)).PaddingLeft = 10f;
-                //table.AddCell(TableContent(""));
-                table.AddCell(TableContent(ci.CandidateSalary.Maximum.ToString() + " - " + ci.CandidateSalary.Minimum.ToString())).PaddingLeft = 10f;
+                table.AddCell(TableContent("$" + string.Format("{0:n}", ci.CandidateSalary.Maximum) + " - $" + string.Format("{0:n}", ci.CandidateSalary.Minimum))).PaddingLeft = 10f;
                 table.AddCell(TableContent(ci.candidate.Address)).PaddingLeft = 10f;
-                table.AddCell(TableContentLevel(ci.AffinityPercentage.ToString()));
+                table.AddCell(TableContentLevel(ci.AffinityPercentage));
             }
+            return table;
+        }
+
+        private PdfPCell HeaderBlue(string data, string iconName, float w, float h, float t)
+        {
+            float[] widths = new float[] { 10f, 30f };
+            PdfPTable table = new PdfPTable(widths);
+            Image icon = ImageReport.GetDemographicIcon(iconName);
+            icon.ScaleToFit(w, h);
+            PdfPCell cell1 = new PdfPCell(icon);
+
+            cell1.HorizontalAlignment = Element.ALIGN_RIGHT;
+            cell1.PaddingTop = t;
+            cell1.PaddingRight = 2f;
+            cell1.BorderWidth = 0;
+            table.AddCell(cell1);
+
+            PdfPCell cell = new PdfPCell();
+            Paragraph p = new Paragraph();
+            //p.Alignment = Element.ALIGN_CENTER;
+           
+
+
+            Font lato = new Font(Font.FontFamily.HELVETICA, 8f, Font.NORMAL, new BaseColor(255, 255, 255));
+
+            lato.Color = new BaseColor(255, 255, 255);
+
+            p.Add(new Chunk(data, lato));
+            cell.AddElement(p);
+            cell.BorderWidth = 0;
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            table.AddCell(cell);
+            
+            PdfPCell cellAll = new PdfPCell(table);
+
+            
+            cellAll.Padding = 10f;
+            cellAll.BorderWidth = 0;
+            cellAll.BackgroundColor = new BaseColor(10, 155, 255);
+            
+            cellAll.BorderColor = new BaseColor(10, 155, 255);
+            return cellAll;
+        }
+
+        private PdfPTable BuildComparativeTable()
+        {
+            float[] widths = new float[] { 10f, 40f, 20f, 20f, 20f, 20f, 20f, 20f };
+            PdfPTable table = new PdfPTable(widths);
+            table.SpacingAfter = 20f;
+
+            table.AddCell(TableHeaderBlue("")).BorderWidth = 0;
+            table.AddCell(HeaderBlue("Competencias", "ResultTableIcons/drawable-hdpi/Competencias", 12f, 12f, 9f)).BorderWidth = 0;
+            table.AddCell(HeaderBlue("Puesto", "ResultTableIcons/drawable-hdpi/Puesto", 10f, 15f, 11f)).BorderWidth = 0;
+            table.AddCell(HeaderBlue("A", "ResultTableIcons/drawable-hdpi/Persona", 13f, 13f, 5f)).BorderWidth = 0;
+            table.AddCell(HeaderBlue("B", "ResultTableIcons/drawable-hdpi/Persona", 13f, 13f, 5f)).BorderWidth = 0;
+            table.AddCell(HeaderBlue("C", "ResultTableIcons/drawable-hdpi/Persona", 13f, 13f, 5f)).BorderWidth = 0;
+            table.AddCell(HeaderBlue("D", "ResultTableIcons/drawable-hdpi/Persona", 13f, 13f, 5f)).BorderWidth = 0;
+            table.AddCell(HeaderBlue("E", "ResultTableIcons/drawable-hdpi/Persona", 13f, 13f, 5f)).BorderWidth = 0;
+
+            /*
+            CandidateReportComparative ci;
+            for (int i = 0; i < Math.Min(5, this.vacantCandidateReportComparative.candidate.Length); i++)
+            {
+                ci = this.vacantCandidateReportComparative.candidate[i];
+                table.AddCell(TableContentName(ci.candidate.Name, i));
+                table.AddCell(TableContent(ci.candidate.Experience)).PaddingLeft = 10f;
+                table.AddCell(TableContent("$" + string.Format("{0:n}", ci.CandidateSalary.Maximum) + " - $" + string.Format("{0:n}", ci.CandidateSalary.Minimum))).PaddingLeft = 10f;
+                table.AddCell(TableContent(ci.candidate.Address)).PaddingLeft = 10f;
+                table.AddCell(TableContentLevel(ci.AffinityPercentage));
+            }
+            */
             return table;
         }
 
@@ -166,12 +238,27 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             return cell;
         }
 
+        private PdfPCell TableHeaderBlue(string data)
+        {
+            PdfPCell cell = new PdfPCell();
+            Paragraph p = new Paragraph(13);
+            Font lato = FontFactory.GetFont("Lato", 10f);
+            lato.Color = new BaseColor(84, 84, 84);
+
+            p.Add(new Chunk(data, lato));
+            cell.AddElement(p);
+            cell.BorderWidth = 0;
+            cell.BackgroundColor = new BaseColor(10, 155, 255);
+            cell.BorderColor = new BaseColor(10, 155, 255);
+            return cell;
+        }
+
 
         private PdfPCell TableHeaderWithIcon(string data, string iconName, float w, float h, float t)
         {
             float[] widths = new float[] { 10f, 30f };
             PdfPTable table = new PdfPTable(widths);
-            Image icon = ImageReport.GetDemographicIcon("DemographicIcons/drawable-hdpi/" + iconName);
+            Image icon = ImageReport.GetDemographicIcon(iconName);
             icon.ScaleToFit(w, h);
             PdfPCell cell1 = new PdfPCell(icon);
 
@@ -223,7 +310,7 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             string urlImageCandidate = this.vacantCandidateReportComparative.candidate[number].candidate.AvatarUri;
             Image avatar;
 
-            if (!string.IsNullOrWhiteSpace(urlImageCandidate)) {
+            if (!string.IsNullOrWhiteSpace(urlImageCandidate)) { 
                 try
                 {
                     avatar = ImageReport.GetCandidateImage(urlImageCandidate);
@@ -274,14 +361,14 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             return cellAll;
         }
 
-        private PdfPCell TableContentLevel(string data)
+        private PdfPCell TableContentLevel(decimal? data)
         {
             PdfPCell cell = new PdfPCell();
 
             Paragraph p = new Paragraph();
             Font arial = FontFactory.GetFont("Arial", 16f);
             arial.Color = new BaseColor(10, 155, 255);
-            p.Add(new Chunk(data + "%", arial));
+            p.Add(new Chunk(data.ToString() + "%", arial));
             p.Alignment = Element.ALIGN_RIGHT;
             
             cell.PaddingRight = 20f;
@@ -290,9 +377,9 @@ namespace Brive.Middleware.PdfGenerator.Yooin
 
             Paragraph p2 = new Paragraph(10f);
             Font arialCh = FontFactory.GetFont("Arial", 8f, Font.BOLD);
-            arialCh.Color = new BaseColor(139, 82, 255);
+            arialCh.Color = this.AffinityColor(data); 
             
-            p2.Add(new Chunk("Sobre calificado", arialCh));
+            p2.Add(new Chunk(this.AffinityText(data), arialCh));
             p2.Alignment = Element.ALIGN_RIGHT;
             
             cell.AddElement(p2);
@@ -300,6 +387,47 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             cell.BorderWidth = 0;
             return cell;
         }
+
+        
+        private BaseColor AffinityColor(decimal? afinity)
+        {
+            switch ((int)afinity / 10)
+            {
+                case 10:
+                    return new BaseColor(139, 82, 255);
+                case 9:
+                    return new BaseColor(0, 166, 255);
+                case 8:
+                    return new BaseColor(125, 217, 86);
+                case 7:
+                    return new BaseColor(235, 145, 10);
+                default:
+                    return new BaseColor(255, 86, 86);
+            }
+        }
+
+        private string AffinityText(decimal? afinity)
+        {
+            switch ((int) afinity/10)
+            {
+                case 10:
+                    return "Sobrecalificado";
+                case 9:
+                    return "Altamente competente";
+                case 8:
+                    return "Calificado";
+                case 7:
+                    return "Con reservas";
+                default:
+                    return "No compatible";
+            }
+        }
+
+
+
+
+
+        /*
         #region Candidate Presentation
 
         private PdfPTable BuildCandidatePresentation()
@@ -778,7 +906,7 @@ namespace Brive.Middleware.PdfGenerator.Yooin
                 text = new Chunk(item.CandidateDomainLevel, latoSubTitle);
                 p.Add(text);
                 interpretationTable.AddCell(p);
-                
+                
                 p = new Paragraph();
                 Font lato = FontFactory.GetFont("Lato", 8f);
                 lato.Color = new BaseColor(32, 129, 1);
@@ -897,12 +1025,12 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             }
             return interpretationTable;
         }
-
+        */
     }
 
 
 
-    #endregion
+    //#endregion
 
 }
 

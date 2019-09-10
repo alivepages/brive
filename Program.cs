@@ -32,7 +32,7 @@ namespace candidatereport
                              Minimum = 23000,
                              Maximum = 25000
                         },
-                        AffinityPercentage = 90
+                        AffinityPercentage = (decimal?)100.14
                     },
                     new CandidateReportComparative
                     {
@@ -47,7 +47,7 @@ namespace candidatereport
                              Minimum = 23000,
                              Maximum = 25000
                         },
-                        AffinityPercentage = (decimal?)100.14
+                        AffinityPercentage = (decimal?)96.58
                     },
                     new CandidateReportComparative
                     {
@@ -62,7 +62,7 @@ namespace candidatereport
                              Minimum = 23000,
                              Maximum = 25000
                         },
-                        AffinityPercentage = 100
+                        AffinityPercentage = (decimal?)80.36
                     },
                     new CandidateReportComparative
                     {
@@ -70,13 +70,13 @@ namespace candidatereport
                         {
                             Name = "Palpatine",
                             Address = "Chalco, Mexico City, CDMX, Mexico",
-                            Experience = "5 años 1 mes"
+                            Experience = "5 años 1 mes"
                         },
                         CandidateSalary = new CandidateSalary{
                              Minimum = 22000,
                              Maximum = 20000
                         },
-                        AffinityPercentage = 100
+                        AffinityPercentage = (decimal?)78.54
                     },
                                                                                                     new CandidateReportComparative
                     {
@@ -91,7 +91,7 @@ namespace candidatereport
                              Minimum = 23000,
                              Maximum = 25000
                         },
-                        AffinityPercentage = 100
+                        AffinityPercentage = (decimal?)60.36
                     }
                 }
             };
