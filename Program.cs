@@ -17,6 +17,10 @@ namespace candidatereport
             VacantCandidateReportComparative data;
             data = new VacantCandidateReportComparative
             {
+                vacant = new VacantLight
+                {
+                    Name = "Programador Web"
+                },
                 vacantCompetences = new VacantCompetence[]
                 {
                     new VacantCompetence
