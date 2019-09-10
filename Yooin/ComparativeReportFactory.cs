@@ -218,7 +218,24 @@ namespace Brive.Middleware.PdfGenerator.Yooin
         {
             float[] widths = new float[] { 10f, 30f };
             PdfPTable table = new PdfPTable(widths);
-            Image avatar = ImageReport.GetDemographicIcon("Avatar/User");
+
+            // Imagen de perfil del candidato
+            string urlImageCandidate = this.vacantCandidateReportComparative.candidate[number].candidate.AvatarUri;
+            Image avatar;
+
+            if (!string.IsNullOrWhiteSpace(urlImageCandidate)) {
+                try
+                {
+                    avatar = ImageReport.GetCandidateImage(urlImageCandidate);
+                }
+                catch
+                {
+                    avatar = ImageReport.GetDemographicIcon("Avatar/User");
+                }
+            } else {
+                avatar = ImageReport.GetDemographicIcon("Avatar/User");
+            }
+
             avatar.ScaleToFit(37f, 37f);
             PdfPCell cell1 = new PdfPCell(avatar);
             cell1.VerticalAlignment = Element.ALIGN_MIDDLE;
@@ -264,7 +281,7 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             Paragraph p = new Paragraph();
             Font arial = FontFactory.GetFont("Arial", 16f);
             arial.Color = new BaseColor(10, 155, 255);
-            p.Add(new Chunk(data, arial));
+            p.Add(new Chunk(data + "%", arial));
             p.Alignment = Element.ALIGN_RIGHT;
             
             cell.PaddingRight = 20f;
@@ -761,7 +778,7 @@ namespace Brive.Middleware.PdfGenerator.Yooin
                 text = new Chunk(item.CandidateDomainLevel, latoSubTitle);
                 p.Add(text);
                 interpretationTable.AddCell(p);
-
+                
                 p = new Paragraph();
                 Font lato = FontFactory.GetFont("Lato", 8f);
                 lato.Color = new BaseColor(32, 129, 1);
@@ -769,7 +786,7 @@ namespace Brive.Middleware.PdfGenerator.Yooin
                 p.Add(new Chunk(ImageReport.GetInterpretationIcon("range"), 0, 0));
                 p.Add(text);
                 lato = FontFactory.GetFont("Lato", 8f, Font.BOLD);
-                text = new Chunk(item.CandidatesAverageScoreMinimum.ToString() + " - " + item.CandidatesAverageScoreMaximum.ToString(), lato);
+                text = new Chunk(String.Format("{0:0.##}",item.CandidatesAverageScoreMinimum) + " - " + item.CandidatesAverageScoreMaximum.ToString(), lato);
                 p.Add(text);
                 interpretationTable.AddCell(p);
 

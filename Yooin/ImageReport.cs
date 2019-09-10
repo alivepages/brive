@@ -30,8 +30,8 @@ namespace Brive.Middleware.PdfGenerator.Yooin
 
         public static Image GetCandidateImage(string url)
         {
-            Image image = Image.GetInstance(new Uri(ConfigurationManager.AppSettings["ReportPdfIcons"] + url));
-            image.ScaleAbsolute(2f, 2f);
+            Image image = Image.GetInstance(new Uri(url));
+            //image.ScaleAbsolute(2f, 2f);
             return image;
         }
 

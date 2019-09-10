@@ -25,7 +25,8 @@ namespace candidatereport
                         {
                             Name = "Anakin Skywalker",
                             Address = "Tepito, Mexico City, CDMX, Mexico",
-                            Experience = "0 años 10 meses"
+                            AvatarUri = "https://s3-us-west-2.amazonaws.com/brive-yooin-users/files/8391",
+                            Experience = "0 años 10 meses"
                         },
                         CandidateSalary = new CandidateSalary{
                              Minimum = 23000,
@@ -39,13 +40,14 @@ namespace candidatereport
                         {
                             Name = "Obi-Wan Kenobi",
                             Address = "Tepito, Mexico City, CDMX, Mexico",
+                            AvatarUri = "https://s3-us-west-2.amazonaws.com/brive-yooin-users/files/8408",
                             Experience = "0 años 10 meses"
                         },
                         CandidateSalary = new CandidateSalary{
                              Minimum = 23000,
                              Maximum = 25000
                         },
-                        AffinityPercentage = 100
+                        AffinityPercentage = (decimal?)100.14
                     },
                     new CandidateReportComparative
                     {
@@ -53,6 +55,7 @@ namespace candidatereport
                         {
                             Name = "Obi-Wan Kenobi",
                             Address = "Tepito, Mexico City, CDMX, Mexico",
+                            AvatarUri = "",
                             Experience = "0 años 10 meses"
                         },
                         CandidateSalary = new CandidateSalary{
@@ -81,7 +84,8 @@ namespace candidatereport
                         {
                             Name = "Darth Maul",
                             Address = "Tepito, Mexico City, CDMX, Mexico",
-                            Experience = "0 años 10 meses"
+                            AvatarUri = "",
+                            Experience = "0 años 10 meses"
                         },
                         CandidateSalary = new CandidateSalary{
                              Minimum = 23000,
