@@ -45,7 +45,7 @@ namespace Brive.Middleware.PdfGenerator.Yooin
 
                 doc.Add(this.title("Resumen Ejecutivo", 2f));
                 doc.Add(this.BuildResumeTable());
-                doc.Add(this.title("Comparativo por competencias", 2f));
+                doc.Add(this.title("Comparativo por competencias", 20f));
                 doc.Add(this.BuildComparativeTable());
                 //doc.Add(Chunk.NEXTPAGE);
                 doc.Add(this.AddImage("page3"));
@@ -182,7 +182,7 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             for (int i = 0; i < this.vacantCandidateReportComparative.vacantCompetences.Length; i++)
             {
                 vi = this.vacantCandidateReportComparative.vacantCompetences[i];
-                table.AddCell(TableContent(vi.IsRequired.ToString())); // TODO: poner icono
+                table.AddCell(TableContent(vi.IsRequired.ToString())); 
                 table.AddCell(TableContent(vi.Name, Element.ALIGN_LEFT));
                 table.AddCell(TableContent(vi.MinScore.ToString()));
 
@@ -191,7 +191,27 @@ namespace Brive.Middleware.PdfGenerator.Yooin
                     ci = this.vacantCandidateReportComparative.candidate[k];
                     vacants = ci.candidateCompetences.ToList();
                     YooinEnterprise.DTO.Models.CandidateCompetence competence = vacants.First(s => s.Competence.Id == vi.CompetenceId);
-                    table.AddCell(TableContent(competence.Score.ToString())); // TODO: Poner pleca
+                    int step = getSteps(vi.MinScore, competence.Score);
+                    string icon = "";
+                    switch (step)
+                    {
+                        case 2:
+                            icon = "up2";
+                            break;
+                        case 1:
+                            icon = "up";
+                            break;
+                        case 0:
+                            icon = "equal";
+                            break;
+                        case -1:
+                            icon = "down";
+                            break;
+                        case -2:
+                            icon = "down2";
+                            break;
+                    }
+                    table.AddCell(ContentWithIcon(competence.Score.ToString(), "symbols/" + icon,10,10,7));
                 }
             }
             
@@ -251,6 +271,68 @@ namespace Brive.Middleware.PdfGenerator.Yooin
             cell.BorderWidth = 0;
             if (iconName == "Level") cell.PaddingTop = -5f; 
             table.AddCell(cell);
+            PdfPCell cellAll = new PdfPCell(table);
+            cellAll.BorderWidth = 0;
+            return cellAll;
+        }
+
+        private int braquetsIndex(decimal search)
+        {
+            decimal[] ranks;
+            ranks = new decimal[]{
+                0, 0.5M, 0.90M, 1.30M, 1.70M , 2, 2.30M,
+                2.60M, 2.90M, 3.20M, 3.50M, 3.70M, 3.85M
+            };
+            for (int i = 1; i < ranks.Length; i++)
+            {
+                if (search < ranks[i]) return i - 1;
+            }
+            return 0;
+        }
+
+        private int getSteps(decimal expected, decimal score)
+        {
+            int dif = braquetsIndex(score) - braquetsIndex(expected);
+            if (dif > 2)
+            {
+                dif = 2;
+            }
+            if (dif <  -2)
+            {
+                dif = -2;
+            }
+            return dif;
+        }
+
+        private PdfPCell ContentWithIcon(string data, string iconName, float w, float h, float t)
+        {
+            float[] widths = new float[] { 10f, 10f };
+            PdfPTable table = new PdfPTable(widths);
+
+            PdfPCell cell = new PdfPCell();
+            Paragraph p = new Paragraph(13);
+            Font lato = FontFactory.GetFont("Lato", 10f);
+            lato.Color = new BaseColor(84, 84, 84);
+
+            p.Add(new Chunk(data, lato));
+            p.Alignment = Element.ALIGN_RIGHT;
+            cell.AddElement(p);
+            cell.BorderWidth = 0;
+            cell.HorizontalAlignment = Element.ALIGN_RIGHT;
+            table.AddCell(cell);
+
+
+            Image icon = ImageReport.GetDemographicIcon(iconName);
+            icon.ScaleToFit(w, h);
+            PdfPCell cell1 = new PdfPCell(icon);
+
+            //cell1.HorizontalAlignment = Element.ALIGN_RIGHT;
+            cell1.PaddingTop = t;
+            //cell1.PaddingRight = 2f;
+            cell1.BorderWidth = 0;
+            table.AddCell(cell1);
+
+
             PdfPCell cellAll = new PdfPCell(table);
             cellAll.BorderWidth = 0;
             return cellAll;

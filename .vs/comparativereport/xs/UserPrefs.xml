@@ -1,7 +1,7 @@
 ﻿<Properties StartupConfiguration="{1C0C8283-B9A6-4706-82CD-F93C27AD61AA}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Yooin/ComparativeReportFactory.cs">
     <Files>
-      <File FileName="Yooin/ComparativeReportFactory.cs" Line="250" Column="11" />
+      <File FileName="Yooin/ComparativeReportFactory.cs" Line="163" Column="38" />
       <File FileName="Yooin/FeaturesReport.cs" />
       <File FileName="Yooin/ImageReport.cs" />
       <File FileName="Program.cs" />
@@ -11,15 +11,7 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="comparativereport" expanded="True">
-            <Node name="comparativereport" expanded="True">
-              <Node name="References" expanded="True" />
-              <Node name="Yooin" expanded="True">
-                <Node name="Helper" expanded="True" />
-                <Node name="ComparativeReportFactory.cs" selected="True" />
-              </Node>
-            </Node>
-          </Node>
+          <Node name="comparativereport" expanded="True" />
         </State>
       </Pad>
     </Pads>

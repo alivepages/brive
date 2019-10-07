@@ -27,16 +27,16 @@ namespace candidatereport
                     {
                         Name = "Guapo",
                         IsRequired = false,
-                        MinScore = 3,
-                        MaxScore = 4,
+                        MinScore = 3.30M,
+                        MaxScore = 4.50M,
                         CompetenceId = 5
                     },
                     new VacantCompetence
                     {
                         Name = "Creatividad e Innovación",
                         IsRequired = true,
-                        MinScore = 2,
-                        MaxScore = 4,
+                        MinScore = 3.30M,
+                        MaxScore = 4.50M,
                         CompetenceId = 3
                     }
                 },
@@ -64,7 +64,7 @@ namespace candidatereport
                                 {
                                     Id = 1
                                 },
-                                Score = 1
+                                Score = 2.25M
                             },
                             new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
                             {
@@ -72,7 +72,7 @@ namespace candidatereport
                                 {
                                     Id = 3
                                 },
-                                Score = 1
+                                Score = 2.25M
                             },
                             new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
                             {
@@ -80,7 +80,7 @@ namespace candidatereport
                                 {
                                     Id = 5
                                 },
-                                Score = 1
+                                Score = 2.95M
                             }
                         }
                     },
@@ -106,7 +106,7 @@ namespace candidatereport
                                 {
                                     Id = 1
                                 },
-                                Score = 1
+                                Score = 2.75M
                             },
                             new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
                             {
@@ -114,7 +114,7 @@ namespace candidatereport
                                 {
                                     Id = 3
                                 },
-                                Score = 1
+                                Score = 2.75M
                             },
                             new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
                             {
@@ -122,7 +122,7 @@ namespace candidatereport
                                 {
                                     Id = 5
                                 },
-                                Score = 2
+                                Score = 3.75M
                             }
                         }
                     },
@@ -148,7 +148,7 @@ namespace candidatereport
                                 {
                                     Id = 1
                                 },
-                                Score = 1
+                                Score = 2.3M
                             },
                             new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
                             {
@@ -156,7 +156,7 @@ namespace candidatereport
                                 {
                                     Id = 3
                                 },
-                                Score = 1
+                                Score = 2.3M
                             },
                             new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
                             {
@@ -164,7 +164,7 @@ namespace candidatereport
                                 {
                                     Id = 5
                                 },
-                                Score = 3
+                                Score = 2.8M
                             }
                         }
                     },
@@ -189,7 +189,7 @@ namespace candidatereport
                                 {
                                     Id = 1
                                 },
-                                Score = 1
+                                Score = 3.3M
                             },
                             new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
                             {
@@ -197,7 +197,7 @@ namespace candidatereport
                                 {
                                     Id = 3
                                 },
-                                Score = 1
+                                Score = 3.3M
                             },
                             new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
                             {
@@ -231,7 +231,7 @@ namespace candidatereport
                                 {
                                     Id = 1
                                 },
-                                Score = 1
+                                Score = 3.40M
                             },
                             new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
                             {
@@ -239,7 +239,7 @@ namespace candidatereport
                                 {
                                     Id = 3
                                 },
-                                Score = 1
+                                Score = 3.40M
                             },
                             new Brive.YooinEnterprise.DTO.Models.CandidateCompetence
                             {
@@ -247,7 +247,7 @@ namespace candidatereport
                                 {
                                     Id = 5
                                 },
-                                Score = 5
+                                Score = 3.4M
                             }
                         }
                     }
